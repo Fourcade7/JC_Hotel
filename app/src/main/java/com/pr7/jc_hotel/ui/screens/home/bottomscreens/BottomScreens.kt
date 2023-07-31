@@ -1,13 +1,9 @@
-package com.pr7.jc_hotel.ui.screens.home
+package com.pr7.jc_hotel.ui.screens.home.bottomscreens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Call
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -17,8 +13,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
@@ -26,34 +26,37 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.pr7.jc_hotel.R
+import com.pr7.jc_hotel.ui.screens.home.ui.theme.BottombarBackground
+import com.pr7.jc_hotel.ui.screens.splash.theme.AppColor
 
 
 sealed class Screens constructor(
     val route: String,
     val title: String,
-    val icon: ImageVector
+    val icon: Int
 ) {
     object Home : Screens(
         route = "home_screen",
         title = "Home",
-        icon = Icons.Default.Home
+        icon = R.drawable.homeflat
     )
 
     object Search : Screens(
         route = "search_screen",
         title = "Search",
-        icon = Icons.Default.Search
+        icon = R.drawable.search
     )
 
     object Message : Screens(
         route = "message_screen",
-        title = "message",
-        icon = Icons.Default.Call
+        title = "Message",
+        icon = R.drawable.email
     )
     object Profile : Screens(
         route = "profile_screen",
         title = "Profile",
-        icon = Icons.Default.Person
+        icon = R.drawable.user
     )
 }
 
@@ -67,18 +70,25 @@ fun RowScope.addItem(
 
     NavigationBarItem(
         label = {
-            Text(text = screens.title)
+            Text(
+               text = screens.title,
+                fontFamily = FontFamily(Font(R.font.mont_light))
+            )
         },
         icon = {
-            Icon(imageVector = screens.icon, contentDescription = "")
+            Icon(
+                painter = painterResource(id = screens.icon),
+                contentDescription = "",
+                modifier = Modifier.size(35.dp).padding(bottom = 5.dp)
+            )
         },
         selected = currentDestination?.hierarchy?.any { it.route == screens.route } == true,
         onClick = {
             navHostController.navigate(screens.route)
         },
         colors = NavigationBarItemDefaults.colors(
-            selectedIconColor = Color.Black,
-            selectedTextColor = Color.Black,
+            selectedIconColor = AppColor,
+            selectedTextColor = AppColor,
             indicatorColor = Color.White,
             unselectedIconColor = Color.Gray,
             unselectedTextColor = Color.Gray
@@ -103,7 +113,7 @@ fun BottomBar(navHostController: NavHostController) {
     val currentDestination = navBackStackEntry?.destination
 
     NavigationBar(
-        containerColor = Color.White
+        containerColor = BottombarBackground
     ) {
         screens.forEach {
             addItem(
@@ -123,10 +133,10 @@ fun bottomNavGraphSetup(
 
 
     NavHost(navController = navHostController, startDestination = Screens.Home.route ){
-        composable(route = Screens.Home.route){ homeScreen()}
-        composable(route = Screens.Search.route){ searchScreen()}
-        composable(route = Screens.Message.route){ messageScreen()}
-        composable(route = Screens.Profile.route){ profileScreen()}
+        composable(route = Screens.Home.route){ homeScreen() }
+        composable(route = Screens.Search.route){ searchScreen() }
+        composable(route = Screens.Message.route){ messageScreen() }
+        composable(route = Screens.Profile.route){ profileScreen() }
 
     }
 }
@@ -134,12 +144,12 @@ fun bottomNavGraphSetup(
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun mainScreen() {
+fun bottombarScreen() {
 
 
     val navController = rememberNavController()
     Scaffold(
-        bottomBar ={ BottomBar(navHostController = navController)}
+        bottomBar ={ BottomBar(navHostController = navController) }
     ) {
         bottomNavGraphSetup(navHostController = navController)
     }

@@ -37,7 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.pr7.jc_hotel.R
-import com.pr7.jc_hotel.ui.screens.splash.theme.Buttonbackground
+import com.pr7.jc_hotel.ui.screens.splash.theme.AppColor
 import com.pr7.jc_hotel.ui.utilits.statusbarcolorchange
 import kotlinx.coroutines.launch
 
@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            statusbarcolorchange(window = window)
+            statusbarcolorchange(window = window, color = Color.Transparent)
             mainScreen()
         }
 
@@ -111,7 +111,7 @@ fun mainScreen() {
 
                 },
             shape = RoundedCornerShape(35.dp),
-            color = Buttonbackground
+            color = AppColor
         ) {
             Column(verticalArrangement = Arrangement.Center) {
 

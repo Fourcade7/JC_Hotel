@@ -1,4 +1,4 @@
-package com.pr7.jc_hotel.ui.screens.home
+package com.pr7.jc_hotel.ui.screens.home.bottomscreens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,14 +14,14 @@ import androidx.compose.ui.unit.sp
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun messageScreen() {
+fun searchScreen() {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
     ) {
         Text(
-            text = "Message",
+            text = "Search",
             fontSize = 45.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Blue
