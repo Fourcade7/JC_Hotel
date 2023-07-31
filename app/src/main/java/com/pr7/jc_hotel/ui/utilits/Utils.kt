@@ -8,12 +8,12 @@ import androidx.core.view.WindowCompat
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
-fun statusbarcolorchange(window: Window) {
+fun statusbarcolorchange(window: Window,color: Color) {
     WindowCompat.setDecorFitsSystemWindows(window, false)
     val systemUiController = rememberSystemUiController()
     SideEffect {
         systemUiController.setStatusBarColor(
-            color = Color.Transparent,
+            color = color,
             darkIcons = false
         )
     }

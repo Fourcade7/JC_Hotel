@@ -2,6 +2,7 @@
 
 package com.pr7.jc_hotel.ui.screens.onboarding
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -37,6 +38,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.pr7.jc_hotel.R
+import com.pr7.jc_hotel.ui.screens.home.HomeActivity
 import com.pr7.jc_hotel.ui.screens.splash.theme.AppColor
 import com.pr7.jc_hotel.ui.utilits.statusbarcolorchange
 import kotlinx.coroutines.launch
@@ -54,7 +56,7 @@ class MainActivity : ComponentActivity() {
 }
 
 
-@Preview(showBackground = true, showSystemUi = true)
+
 @Composable
 fun mainScreen() {
     val pagerState = rememberPagerState { 3 }
@@ -104,9 +106,8 @@ fun mainScreen() {
                     }
                     if (pagerState.currentPage == 2) {
                         Log.d("PR77777", "onBoardMain: GG")
-                        //context.startActivity(Intent(context, ChangeActivity::class.java))
-
-
+                        val intent=Intent(context, HomeActivity::class.java)
+                        context.startActivity(intent)
                     }
 
                 },

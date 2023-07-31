@@ -26,7 +26,7 @@ class HomeActivity : ComponentActivity() {
 }
 
 
-@Preview(showBackground = true, showSystemUi = true)
+//@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun homescrrenmain() {
     Column(modifier = Modifier.fillMaxSize()) {

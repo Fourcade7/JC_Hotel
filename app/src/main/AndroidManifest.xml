@@ -12,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JC_Hotel"
         tools:targetApi="31">
+
         <activity
-            android:name=".ui.screens.home.HomeActivity"
+            android:name=".ui.screens.onboarding.MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.JC_Hotel">
@@ -24,15 +25,24 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.screens.home.HomePreviewActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home_preview"
+            android:theme="@style/Theme.JC_Hotel" />
+        <activity
             android:name=".ui.screens.splash.SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.JC_Hotel">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.screens.home.HomeActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.JC_Hotel"
+            >
+
         </activity>
     </application>
 
