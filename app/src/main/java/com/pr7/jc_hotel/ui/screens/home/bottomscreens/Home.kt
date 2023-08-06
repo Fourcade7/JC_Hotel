@@ -176,7 +176,8 @@ fun homefragmentscreen() {
                     }
                 },
                 modifier = Modifier.weight(1f),
-                colors = TextFieldDefaults.outlinedTextFieldColors(unfocusedBorderColor = Color.LightGray, focusedBorderColor = AppColor)
+                colors = TextFieldDefaults.outlinedTextFieldColors(unfocusedBorderColor = Color.LightGray, focusedBorderColor = AppColor),
+                maxLines = 1
 
             )
             Spacer(modifier = Modifier.width(25.dp))
@@ -238,7 +239,8 @@ fun homefragmentscreen() {
                     }
                 },
                 modifier = Modifier.fillMaxWidth(),
-                colors = TextFieldDefaults.outlinedTextFieldColors(unfocusedBorderColor = Color.LightGray, focusedBorderColor = AppColor)
+                colors = TextFieldDefaults.outlinedTextFieldColors(unfocusedBorderColor = Color.LightGray, focusedBorderColor = AppColor),
+                maxLines = 1
 
             )
         Spacer(modifier = Modifier.height(15.dp))
